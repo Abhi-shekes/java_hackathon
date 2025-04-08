@@ -112,3 +112,38 @@
 08-Apr-2025 12:20:02.247 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8081"]
 08-Apr-2025 12:20:02.256 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [617] milliseconds
 08-Apr-2025 12:22:21.435 WARNING [http-nio-8081-exec-2] com.mongodb.internal.diagnostics.logging.Loggers.shouldUseSLF4J SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+08-Apr-2025 12:42:02.869 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.39
+08-Apr-2025 12:42:02.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 4 2025 19:02:32 UTC
+08-Apr-2025 12:42:02.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.39.0
+08-Apr-2025 12:42:02.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+08-Apr-2025 12:42:02.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+08-Apr-2025 12:42:02.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+08-Apr-2025 12:42:02.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Users\RINKU\.jdks\corretto-22.0.2
+08-Apr-2025 12:42:02.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           22.0.2+9-FR
+08-Apr-2025 12:42:02.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Amazon.com Inc.
+08-Apr-2025 12:42:02.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\RINKU\OneDrive\Desktop\java_hackathon
+08-Apr-2025 12:42:02.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\apache-tomcat-10.1.39
+08-Apr-2025 12:42:02.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+08-Apr-2025 12:42:02.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\apache-tomcat-10.1.39
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\RINKU\OneDrive\Desktop\java_hackathon
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\RINKU\OneDrive\Desktop\java_hackathon\temp
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\RINKU\OneDrive\Desktop\java_hackathon\conf\logging.properties
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.3.5\lib\idea_rt.jar=53670
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+08-Apr-2025 12:42:02.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+08-Apr-2025 12:42:02.897 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [C:\Users\RINKU\.jdks\corretto-22.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk-19\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Python311;C:\MinGW\bin;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Kubernetes\Minikube;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\RINKU\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\RINKU\AppData\Local\Programs\Python\Python310\;C:\Users\RINKU\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.3.5\bin;;C:\Program Files\Azure Data Studio\bin;C:\Users\RINKU\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\RINKU\AppData\Roaming\npm;.]
+08-Apr-2025 12:42:03.293 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+08-Apr-2025 12:42:03.311 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [750] milliseconds
+08-Apr-2025 12:42:03.378 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+08-Apr-2025 12:42:03.378 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.39]
+08-Apr-2025 12:42:03.389 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\RINKU\OneDrive\Desktop\java_hackathon\conf\Catalina\localhost\hackathon.xml]
+08-Apr-2025 12:42:04.535 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+08-Apr-2025 12:42:04.612 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\RINKU\OneDrive\Desktop\java_hackathon\conf\Catalina\localhost\hackathon.xml] has finished in [1,222] ms
+08-Apr-2025 12:42:04.617 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+08-Apr-2025 12:42:04.644 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [1331] milliseconds
