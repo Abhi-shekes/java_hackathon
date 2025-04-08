@@ -31,14 +31,15 @@ public class LoginServlet extends HttpServlet {
         if (user != null && user.getPassword().equals(password)) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+            session.setAttribute("name" , user.getName());
             response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().write("Login successful!");
-            // response.sendRedirect("chat.jsp");
+
+            response.sendRedirect("chatClient.jsp");
 
         } else {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().write("Invalid email or password");
-           // response.sendRedirect("login.jsp");
+           response.sendRedirect("login.jsp");
         }
     }
 }

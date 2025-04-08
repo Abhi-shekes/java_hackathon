@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +14,78 @@
         }
     </style>
 </head>
+
+
+<script>
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    alert("Speech Recognition is not supported in this browser.");
+  } else {
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+      console.log("🎙️ Voice recognition activated. Try speaking.");
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[event.results.length - 1][0].transcript;
+      console.log("🎤 Heard:", transcript);
+
+      const heardEl = document.getElementById("heard");
+      if (heardEl) {
+        heardEl.textContent = transcript;
+      } else {
+        console.warn("Element with id='heard' not found. Cannot display transcript.");
+      }
+
+      const normalized = transcript.trim().toLowerCase();
+      console.log("📎 Normalized Command:", normalized);
+
+      // Fuzzy matching for common voice recognition errors
+      const triggerPhrases = ["hey", "heyyyy", "heeyyy"];
+      const isTriggered = triggerPhrases.some(phrase => normalized.includes(phrase));
+
+      if (!isTriggered) {
+        console.log("❌ Ignoring command. Prefix 'hey ' not found.");
+        return;
+      }
+
+      let actionPart = normalized;
+      triggerPhrases.forEach(phrase => {
+        if (actionPart.includes(phrase)) {
+          actionPart = actionPart.replace(phrase, "").trim();
+        }
+      });
+
+      if (actionPart === "login page") {
+        console.log("🔁 Redirecting to login.jsp");
+        window.location.href = "login.jsp";
+      } else if (actionPart === "signup page") {
+        console.log("🔁 Redirecting to register.jsp");
+        window.location.href = "signup.jsp";
+      } else {
+        console.log("🤔 Unknown command:", actionPart);
+      }
+    };
+
+    recognition.onerror = (event) => {
+      console.error("🎤 Error:", event.error);
+    };
+
+    recognition.onend = () => {
+      console.log("🎙️ Voice recognition stopped. Restarting...");
+      recognition.start(); // Keep it running continuously
+    };
+
+    recognition.start();
+  }
+</script>
+
+
 <body class="bg-gray-50 min-h-screen flex flex-col">
     <!-- Header -->
     <header class="bg-white shadow-sm">
@@ -20,7 +93,7 @@
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <div class="flex-shrink-0 flex items-center">
-                        <a href="index.jsp" class="text-2xl font-bold text-purple-600">ChatWave</a>
+                        <a href="index.html" class="text-2xl font-bold text-purple-600">ChatWave</a>
                     </div>
                 </div>
                 <div class="flex items-center">
@@ -37,35 +110,59 @@
         <div class="max-w-md w-full space-y-8">
             <div>
                 <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                    Create a new account
+                   Create a new account
                 </h2>
                 <p class="mt-2 text-center text-sm text-gray-600">
                     Or
-                    <a href="signup.jsp" class="font-medium text-purple-600 hover:text-purple-500">
-                        login to your account
+                    <a href="login.jsp" class="font-medium text-purple-600 hover:text-purple-500">
+                       Login Now
                     </a>
                 </p>
             </div>
-            <form class="mt-8 space-y-6" action="chat.jsp" method="GET">
+            <form class="mt-8 space-y-6" action="/hackathon/register" method="POST">
                 <input type="hidden" name="remember" value="true">
-                <div class="rounded-md shadow-sm -space-y-px">
-                    <div>
-                        <label for="email-address" class="sr-only">Email address</label>
-                        <input id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm" placeholder="Email address">
-                    </div>
-                    <div>
-                        <label for="password" class="sr-only">Password</label>
-                        <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm" placeholder="Password">
-                    </div>
-                </div>
+
+
+                <input type="hidden" name="remember" value="true">
+                    <div class="rounded-md shadow-sm -space-y-px flex flex-col gap-5">
+                        <div>
+                            <label for="name" class="sr-only">Full Name</label>
+                            <input id="name" name="name" type="text" required placeholder="Full Name" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+
+                        <div>
+                            <label for="username" class="sr-only">Username</label>
+                            <input id="username" name="username" type="text" required placeholder="Username" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+
+                        <div>
+                            <label for="email" class="sr-only">Email address</label>
+                            <input id="email" name="email" type="email" autocomplete="email" required placeholder="Email address" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+
+                        <div>
+                            <label for="password" class="sr-only">Password</label>
+                            <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Password" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+
+                        <div>
+                            <label for="age" class="sr-only">Age</label>
+                            <input id="age" name="age" type="number" required placeholder="Age" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+
+                        <div>
+                            <label for="gender" class="sr-only">Gender</label>
+                            <select id="gender" name="gender" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 bg-white text-gray-500 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not-to-say">Prefer not to say</option>
+                            </select>
+                        </div>
 
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded">
-                        <label for="remember-me" class="ml-2 block text-sm text-gray-900">
-                            Remember me
-                        </label>
-                    </div>
+
 
                     <div class="text-sm">
                         <a href="#" class="font-medium text-purple-600 hover:text-purple-500">
@@ -76,11 +173,7 @@
 
                 <div>
                     <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
-                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                            <svg class="h-5 w-5 text-purple-500 group-hover:text-purple-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-                            </svg>
-                        </span>
+
                         Sign in
                     </button>
                 </div>
@@ -90,20 +183,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 border-t border-gray-200">
-            <div class="md:flex md:items-center md:justify-between">
-                <div class="flex justify-center md:justify-start">
-                    <h2 class="text-xl font-bold text-purple-600">ChatWave</h2>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <p class="text-center text-sm text-gray-400">
-                        &copy; 2023 ChatWave, Inc. All rights reserved.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+
 </body>
 </html>

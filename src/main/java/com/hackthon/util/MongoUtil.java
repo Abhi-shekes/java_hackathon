@@ -9,7 +9,7 @@ public class MongoUtil {
 
     public static MongoDatabase getDatabase() {
         if (mongoClient == null) {
-            mongoClient = MongoClients.create("mongodb+srv://2003deepak:Deepak%407449%2A@atlascluster.yeqsq.mongodb.net/DevDuo?retryWrites=true&w=majority&appName=AtlasCluster");
+            mongoClient = MongoClients.create("mongodb://localhost:27017");
         }
         return mongoClient.getDatabase("hackathon_db");
     }
