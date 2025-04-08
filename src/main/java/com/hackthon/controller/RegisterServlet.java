@@ -22,7 +22,6 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Get parameters from form
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String name     = request.getParameter("name");
@@ -30,13 +29,10 @@ public class RegisterServlet extends HttpServlet {
         int age         = Integer.parseInt(request.getParameter("age"));
         String gender   = request.getParameter("gender");
 
-        // Create user object
         User user = new User(username, password, name, email, age, gender);
 
-        // Store in DB
         userDAO.insertUser(user);
 
-        // Redirect to login or success page
         response.sendRedirect("login.jsp");
     }
 }

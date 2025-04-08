@@ -16,6 +16,8 @@ public class User {
         this.age = age;
         this.gender = gender;
     }
+    public User() {
+    }
 
     // Getters
     public String getUsername() {
