@@ -20,7 +20,7 @@
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <div class="flex-shrink-0 flex items-center">
-                        <a href="index.html" class="text-2xl font-bold text-purple-600">ChatWave</a>
+                        <a href="index.jsp" class="text-2xl font-bold text-purple-600">ChatWave</a>
                     </div>
                 </div>
                 <div class="flex items-center">
@@ -37,16 +37,16 @@
         <div class="max-w-md w-full space-y-8">
             <div>
                 <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                    Sign in to your account
+                    Create a new account
                 </h2>
                 <p class="mt-2 text-center text-sm text-gray-600">
                     Or
-                    <a href="signup.html" class="font-medium text-purple-600 hover:text-purple-500">
-                        create a new account
+                    <a href="signup.jsp" class="font-medium text-purple-600 hover:text-purple-500">
+                        login to your account
                     </a>
                 </p>
             </div>
-            <form class="mt-8 space-y-6" action="chat.html" method="GET">
+            <form class="mt-8 space-y-6" action="chat.jsp" method="GET">
                 <input type="hidden" name="remember" value="true">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
@@ -90,6 +90,20 @@
         </div>
     </div>
 
-
+    <!-- Footer -->
+    <footer class="bg-white">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 border-t border-gray-200">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex justify-center md:justify-start">
+                    <h2 class="text-xl font-bold text-purple-600">ChatWave</h2>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <p class="text-center text-sm text-gray-400">
+                        &copy; 2023 ChatWave, Inc. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
