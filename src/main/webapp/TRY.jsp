@@ -445,13 +445,8 @@
         }
 
         function joinRoom(roomId) {
-            const chatBox = document.getElementById("chatBox");
-            if (chatBox) {
-                chatBox.dataset.loaded = "";
-            }
             window.location.href = window.location.pathname + '?roomId=' + roomId;
         }
-
 
         function connectToRoom(roomId) {
             if (sockets[roomId]) return;
@@ -460,57 +455,24 @@
 
             sockets[roomId] = socket;
 
-            socket.onopen = function () {
+            socket.onopen = function() {
                 addSystemMessage(`🟢 Connected to room ${roomId}`);
-                loadChatHistory(roomId); // 💬 Load chat history
             };
 
-            socket.onclose = function () {
+            socket.onclose = function() {
                 addSystemMessage(`🔴 Disconnected from room ${roomId}`);
                 delete sockets[roomId];
             };
 
-            socket.onmessage = function (event) {
+            socket.onmessage = function(event) {
                 displayMessage(event.data);
             };
 
-            socket.onerror = function (error) {
+            socket.onerror = function(error) {
                 console.error("WebSocket error:", error);
                 updateRoomStatus(roomId, "Error");
             };
         }
-
-        function saveMessageToStorage(roomId, message) {
-            let allChats = JSON.parse(localStorage.getItem('chatLogs') || '{}');
-            if (!allChats[roomId]) allChats[roomId] = [];
-            allChats[roomId].push(message);
-            localStorage.setItem('chatLogs', JSON.stringify(allChats));
-        }
-
-
-        function loadChatHistory(roomId) {
-            const chatBox = document.getElementById("chatBox");
-            if (!chatBox) return;
-
-            chatBox.innerHTML = ""; // Clear old messages
-
-            const allChats = JSON.parse(localStorage.getItem('chatLogs') || '{}');
-            const messages = allChats[roomId] || [];
-
-            messages.forEach(msg => {
-                const messageDiv = document.createElement('div');
-                messageDiv.classList.add('msg');
-
-                const isOwnMessage = msg.startsWith(username + ":");
-                messageDiv.classList.add(isOwnMessage ? 'msg-right' : 'msg-left');
-                messageDiv.textContent = msg;
-
-                chatBox.appendChild(messageDiv);
-            });
-
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
 
         function updateRoomStatus(roomId, status) {
                 const statusElement = document.getElementById(`status-${roomId}`);
@@ -534,41 +496,27 @@
             }
         }
 
-       function displayMessage(msgText) {
-           const chatBox = document.getElementById("chatBox");
+        function displayMessage(msgText) {
+            const chatBox = document.getElementById("chatBox");
 
-           // Show system messages (don't store them)
-           if (msgText.startsWith("🟢") || msgText.startsWith("🔴")) {
-               const systemMsg = document.createElement('div');
-               systemMsg.className = 'system-msg';
-               systemMsg.textContent = msgText;
-               chatBox.appendChild(systemMsg);
-           } else {
-               const messageDiv = document.createElement('div');
-               messageDiv.classList.add('msg');
+            if (msgText.startsWith("🟢") || msgText.startsWith("🔴")) {
+                const systemMsg = document.createElement('div');
+                systemMsg.className = 'system-msg';
+                systemMsg.textContent = msgText;
+                chatBox.appendChild(systemMsg);
+            } else {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('msg');
 
-               const isOwnMessage = msgText.startsWith(username + ":");
-               messageDiv.classList.add(isOwnMessage ? 'msg-right' : 'msg-left');
-               messageDiv.textContent = msgText;
+                const isOwnMessage = msgText.startsWith(username + ":");
+                messageDiv.classList.add(isOwnMessage ? 'msg-right' : 'msg-left');
+                messageDiv.textContent = msgText;
 
-               chatBox.appendChild(messageDiv);
+                chatBox.appendChild(messageDiv);
+            }
 
-               // Save normal chat to localStorage
-               saveMessageToStorage(currentRoom, msgText);
-           }
-
-           chatBox.scrollTop = chatBox.scrollHeight;
-       }
-
-
-        function saveMessageToLocalStorage(roomId, msgText) {
-            const key = "chat_" + roomId;
-            let chatHistory = JSON.parse(localStorage.getItem(key)) || [];
-            chatHistory.push(msgText);
-            localStorage.setItem(key, JSON.stringify(chatHistory));
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
-
-
 
         function sendMessage() {
             if (!currentRoom || !sockets[currentRoom]) return;
@@ -641,6 +589,8 @@
 <% } %>
 </body>
 </html>
+
+
 
 
 
