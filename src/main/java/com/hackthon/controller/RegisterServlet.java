@@ -24,10 +24,10 @@ public class RegisterServlet extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String name     = request.getParameter("name");
-        String email    = request.getParameter("email");
-        int age         = Integer.parseInt(request.getParameter("age"));
-        String gender   = request.getParameter("gender");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String gender = request.getParameter("gender");
 
         User user = new User(username, password, name, email, age, gender);
 

@@ -33,9 +33,12 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", user);
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().write("Login successful!");
+            // response.sendRedirect("chat.jsp");
+
         } else {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().write("Invalid email or password");
+           // response.sendRedirect("login.jsp");
         }
     }
 }
