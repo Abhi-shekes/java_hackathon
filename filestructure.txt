@@ -1,0 +1,60 @@
+|-- .gitignore
+|-- .smarttomcat
+    |-- hackathon
+        |-- conf
+            |-- Catalina
+                |-- localhost
+            |-- catalina.policy
+            |-- catalina.properties
+            |-- context.xml
+            |-- jaspic-providers.xml
+            |-- jaspic-providers.xsd
+            |-- logging.properties
+            |-- server.xml
+            |-- tomcat-users.xml
+            |-- tomcat-users.xsd
+            |-- web.xml
+|-- conf
+    |-- Catalina
+        |-- localhost
+            |-- hackathon.xml
+    |-- catalina.policy
+    |-- catalina.properties
+    |-- context.xml
+    |-- jaspic-providers.xml
+    |-- jaspic-providers.xsd
+    |-- logging.properties
+    |-- server.xml
+    |-- tomcat-users.xml
+    |-- tomcat-users.xsd
+    |-- web.xml
+|-- pom.xml
+|-- src
+    |-- main
+        |-- java
+            |-- com
+                |-- hackthon
+                    |-- controller
+                        |-- LoginServlet.java
+                        |-- RegisterServlet.java
+                    |-- dao
+                        |-- UserDAO.java
+                    |-- model
+                        |-- User.java
+                    |-- util
+                        |-- MongoUtil.java
+        |-- resources
+        |-- webapp
+            |-- WEB-INF
+                |-- web.xml
+            |-- index.jsp
+|-- webapps
+|-- work
+    |-- Catalina
+        |-- localhost
+            |-- hackathon
+                |-- org
+                    |-- apache
+                        |-- jsp
+                            |-- index_jsp.class
+                            |-- index_jsp.java
